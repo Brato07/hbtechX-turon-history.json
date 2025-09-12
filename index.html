@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TURON Price Chart</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 40px;
+      background: linear-gradient(to bottom right, #7B160E, #243b55);
+      color: #ecf0f1;
+    }
+    .chart-container {
+      max-width: 600px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    canvas {
+      width: 100%;
+      height: 300px;
+    }
+    .price-label {
+      text-align: center;
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="chart-container">
+    <div class="price-label">TURON Price: $0.0683 USD</div>
+    <canvas id="turonChart"></canvas>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('turonChart').getContext('2d');
+    const turonChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+        datasets: [{
+          label: 'TURON/USD',
+          data: [0.065, 0.066, 0.067, 0.068, 0.0683],
+          borderColor: '#ecf0f1',
+          backgroundColor: 'rgba(236, 240, 241, 0.2)',
+          fill: true,
+          tension: 0.3
+        }]
+      },
+      options: {
+        scales: {
+          x: { grid: { color: '#555' }, ticks: { color: '#ecf0f1' } },
+          y: { grid: { color: '#555' }, ticks: { color: '#ecf0f1' } }
+        },
+        plugins: {
+          legend: { labels: { color: '#ecf0f1' } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
